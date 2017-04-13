@@ -10,9 +10,11 @@ module Grape
         helpers do
           def paginate(collection, total_count = nil)
             paginated_collection = collection.page(params[:page]).per(params[:per_page]).with_total_count(total_count).tap do |data|
+              total_pages = data.try(:num_pages) || data.try(:total_pages)
+
               @options[:route_options][:meta] = {
                 total: data.total_count.to_s,
-                total_pages: data.num_pages.to_s,
+                total_pages: total_pages.to_s,
                 per_page: params[:per_page].to_s,
                 current_page: data.current_page.to_s,
                 next_page: data.next_page.to_s,
