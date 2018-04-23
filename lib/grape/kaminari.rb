@@ -1,6 +1,5 @@
 require "grape/kaminari/version"
 require "grape/kaminari/max_value_validator"
-require "kaminari/grape"
 require "kaminari/page_scope_methods"
 
 module Grape
