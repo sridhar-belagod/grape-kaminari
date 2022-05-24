@@ -1,7 +1,7 @@
 module Grape
   module Kaminari
     base = if post_0_9_0_grape?
-             Grape::Validations::Base
+             Grape::Validations::Validators::Base
            else
              Grape::Validations::SingleOptionValidator
            end
